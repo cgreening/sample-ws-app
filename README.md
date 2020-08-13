@@ -1,5 +1,11 @@
 # Simple test websocket server
 
+Created a test cluster using:
+
+```
+eksctl create cluster --name dev-cluster --version 1.17 --region eu-west-1 --nodegroup-name standard-workers --node-type t3.micro --nodes 3 --nodes-min 1 --nodes-max 4 --managed
+```
+
 Followed the instructions here:
 
 https://aws.amazon.com/blogs/opensource/network-load-balancer-nginx-ingress-controller-eks/
@@ -8,12 +14,6 @@ And used the script from here to set up the pre-requisites
 
 ```
 kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-0.32.0/deploy/static/provider/aws/deploy.yaml
-```
-
-Created a test cluster using:
-
-```
-eksctl create cluster --name dev-cluster --version 1.17 --region eu-west-1 --nodegroup-name standard-workers --node-type t3.micro --nodes 3 --nodes-min 1 --nodes-max 4 --managed
 ```
 
 ```
