@@ -39,6 +39,14 @@ docker tag <<IMAGE>> 140049730323.dkr.ecr.eu-west-1.amazonaws.com/test-app:vXXX
 docker push 140049730323.dkr.ecr.eu-west-1.amazonaws.com/test-app:vXXX
 ```
 
+Or to docker hub
+
+```
+docker build .
+docker tag <<IMAGE>> cgreening/simple-ws-demo:v14
+docker push cgreening/simple-ws-demo:v14
+```
+
 Update the `node-server.yml` to use the new image tag
 
 Deploy

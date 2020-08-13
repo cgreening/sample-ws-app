@@ -15,7 +15,7 @@ spec:
         app: node-test
     spec:
       containers:
-        - image: 140049730323.dkr.ecr.eu-west-1.amazonaws.com/test-app:v14
+        - image: cgreening/simple-ws-demo:v14
           name: node-test
           ports:
             - containerPort: 9000
