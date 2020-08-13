@@ -28,16 +28,13 @@ Clean up with:
 eksctl delete cluster --name prod --profile cmgresearch
 ```
 
-```
-docker build .
-```
-
 Push image to ecr
 
 ```
 -- create the ecr repo aws ecr create-repository --repository-name test-app --profile cmgresearch
 -- login aws ecr get-login-password --region eu-west-1 --profile cmgresearch | docker login --username AWS --password-stdin 140049730323.dkr.ecr.eu-west-1.amazonaws.com
 
+docker build .
 docker tag <<IMAGE>> 140049730323.dkr.ecr.eu-west-1.amazonaws.com/test-app:vXXX
 docker push 140049730323.dkr.ecr.eu-west-1.amazonaws.com/test-app:vXXX
 ```
