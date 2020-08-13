@@ -1,0 +1,18 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: example-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/ssl-redirect: "false"
+    nginx.ingress.kubernetes.io/force-ssl-redirect: "false"
+    nginx.ingress.kubernetes.io/rewrite-target: /$2
+spec:
+  rules:
+    - host: test.cmgresearch.com
+      # a6fbec32cbff34c6f8bb6ab15fa88a7c-e0cc713a14e00ce6.elb.eu-west-1.amazonaws.com
+      http:
+        paths:
+          - path: /test(/|$)(.*)
+            backend:
+              serviceName: node-service
+              servicePort: 9000

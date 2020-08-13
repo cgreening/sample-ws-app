@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: node-test
+  labels:
+    app: node-test
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: node-test
+  template:
+    metadata:
+      labels:
+        app: node-test
+    spec:
+      containers:
+        - image: 140049730323.dkr.ecr.eu-west-1.amazonaws.com/test-app:v14
+          name: node-test
+          ports:
+            - containerPort: 9000
+              name: http-server
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: node-service
+spec:
+  selector:
+    app: node-test
+  ports:
+    - port: 9000

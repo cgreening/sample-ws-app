@@ -1,0 +1,30 @@
+<html>
+  <head>
+    <script>
+      // Create WebSocket connection.
+      console.log(location.host);
+      const socket = new WebSocket(location.href.replace("http", "ws"));
+      // Connection opened
+      socket.addEventListener("open", function (event) {
+        socket.send("Hello Server!");
+      });
+      // Listen for messages
+      socket.addEventListener("message", function (event) {
+        const newMessage = document.createElement("div");
+        newMessage.appendChild(document.createTextNode(event.data));
+        document.getElementById("messages").appendChild(newMessage);
+        console.log("Message from server ", event.data);
+      });
+
+      function sendMessage() {
+        newMessageElement = document.getElementById("newMessage");
+        socket.send(newMessageElement.value);
+      }
+    </script>
+  </head>
+  <body>
+    <input type="text" id="newMessage" />
+    <button onclick="sendMessage()">Send</button>
+    <div id="messages"></div>
+  </body>
+</html>
